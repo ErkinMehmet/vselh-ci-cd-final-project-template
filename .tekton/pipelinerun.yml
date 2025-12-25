@@ -1,0 +1,17 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: cd-pipeline-run
+spec:
+  pipelineRef:
+    name: cd-pipeline
+  params:
+    - name: repo-url
+      value: https://github.com/ErkinMehmet/vselh-ci-cd-final-project-template.git
+    - name: branch
+      value: master
+    - name: build-image
+      value: us.icr.io/fqm2025/ci-cd-project:latest
+  workspaces:
+    - name: pipeline-workspace
+      emptyDir: {}
